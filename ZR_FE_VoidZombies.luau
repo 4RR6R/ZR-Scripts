@@ -2,9 +2,11 @@
     Zombie Rush Vulnerability Proof of Concept
     Discovered by 4RR6R
 
-    This script demonstrates a server-side validation issue related to melee hit direction handling that can cause zombie entities to be invalidated (voided) when struck with a sword.
-
-    This issue should be fixed in a future update.
+    This script demonstrates a server-side validation issue related to weapon state handling
+    that can affect zombie AI behavior and player entities
+    Specifically, when using the Ban Hammer, this vulnerability allows players to be
+    invalidated (voided) due to improper server-side validation of combat parameters
+    This issue will be fixed in a future update
 
     Status: Functional
 
