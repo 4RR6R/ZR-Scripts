@@ -23,5 +23,5 @@ local originalNamecall; originalNamecall = hookmetamethod(game, "__namecall", ne
 		end
 	end
     setnamecallmethod(namecallmethod)
-	return originalNamecall(self, ...)
+	return originalNamecall(self, table.unpack(arguments, 1, arguments.n))
 end))
