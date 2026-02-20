@@ -19,8 +19,8 @@ async function unblockProcess() {
                     method: "POST",
                     credentials: "include",
                     headers: {
-                        "Accept": "application/json, text/plain, */*",
-                        "Content-Type": "application/json;charset=utf-8",
+                        "Accept": "application/json",
+                        "Content-Type": "application/json",
                         "x-csrf-token": token,
                     },
                     body: JSON.stringify({})
