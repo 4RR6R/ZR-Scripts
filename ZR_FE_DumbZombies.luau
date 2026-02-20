@@ -2,11 +2,8 @@
     Zombie Rush Vulnerability Proof of Concept
     Discovered by 4RR6R
 
-    This script demonstrates a server-side velocity desynchronization issue
-    affecting AI target prediction mechanics
-    While this technique can also be used to fling zombies or players
-    outside of the map boundaries (when playing as a zombie), that is
-    not the primary purpose of this proof of concept
+    This script demonstrates a server-side velocity desynchronization issue affecting AI target prediction mechanics
+    While this technique can also be used to fling zombies or players outside of the map boundaries (when playing as a zombie), that is not the primary purpose of this proof of concept
 
     Status: Functional
 
