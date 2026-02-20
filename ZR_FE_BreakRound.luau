@@ -72,7 +72,7 @@ local function main() : () -> ()
 				Tool = tool,
 				RealTool = tool,
 				HumanoidTables = {{
-					HeadHits = 0 / 0 -- Vulnerability is here -> nan
+					HeadHits = 0 / 0, -- Vulnerability is here -> nan
 					BodyHits = 0, -- Same thing here too
 					THumanoid = zombieTarget.Humanoid,
 				}},
