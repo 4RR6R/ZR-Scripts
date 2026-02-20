@@ -70,6 +70,7 @@ local function main() : () -> ()
 				warn("Weapon has been unequipped")
 				break
 			end
+			zombieTarget = getZombieTarget(tool.Handle.Muzzle.WorldPosition, tool:GetAttribute("Range"))
 			local muzzlePosition = tool.Handle.Muzzle.WorldPosition
 			local targetDirection = (zombieTarget.Torso.Position - muzzlePosition).Unit
 			weaponEvent:FireServer({
@@ -94,7 +95,6 @@ local function main() : () -> ()
 		else
 			warn("Target not found, retrying...")
 		end
-		zombieTarget = getZombieTarget(tool.Handle.Muzzle.WorldPosition, tool:GetAttribute("Range"))
 		task.wait(1 / tool:GetAttribute("Firerate"))
 	end
 end
