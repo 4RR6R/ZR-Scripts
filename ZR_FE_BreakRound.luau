@@ -46,7 +46,7 @@ end
     Main function to handle weapon firing logic
 ]]
 local function main() : () -> ()
-    warn("Processing...")
+	warn("Processing...")
 	if not character:FindFirstChild("Alive") then
 		return warn("Please wait for the next wave")
 	end
@@ -66,6 +66,10 @@ local function main() : () -> ()
 	end
 	while true do
 		if zombieTarget and zombieTarget:FindFirstChild("Torso") then
+			if not tool or not tool:IsDescendantOf(character) then
+				warn("Weapon has been unequipped")
+				break
+			end
 			local muzzlePosition = tool.Handle.Muzzle.WorldPosition
 			local targetDirection = (zombieTarget.Torso.Position - muzzlePosition).Unit
 			weaponEvent:FireServer({
