@@ -66,7 +66,7 @@ local function main() : () -> ()
 	end
 	while true do
 		if zombieTarget and zombieTarget:FindFirstChild("Torso") then
-			if not tool or not tool:IsDescendantOf(character) then
+			if not tool or not tool:FindFirstChild("Handle") or not tool:IsDescendantOf(character) then
 				warn("Weapon has been unequipped")
 				break
 			end
