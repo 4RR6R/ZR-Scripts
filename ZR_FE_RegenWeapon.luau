@@ -16,7 +16,6 @@ local localPlayer = Players.LocalPlayer
 
 local originalNamecall; originalNamecall = hookmetamethod(game, "__namecall", newcclosure(function(self : Instance, ... : any) : any
 	local arguments = table.pack(...)
-	local traceback = debug.traceback()
 	local namecallmethod = getnamecallmethod()
 	if not checkcaller() then
 		if self.Name == "WeaponEvent" and namecallmethod == "FireServer" then
