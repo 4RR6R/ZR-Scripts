@@ -106,7 +106,11 @@ local function main() : () -> ()
 				Tool = tool,
 				RealTool = tool,
 				HumanoidTables = {{
+					-- Injects a controlled head hit value
 					HeadHits = 1,
+					-- Injects a negative body hit value
+                    -- Used to observe how the server processes
+                    -- mixed-sign damage inputs
 					BodyHits = zombieTarget:GetAttribute("Boss") ~= nil and -1.5 or 0,
 					THumanoid = zombieTarget.Humanoid,
 				}},
