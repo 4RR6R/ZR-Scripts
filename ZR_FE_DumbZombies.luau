@@ -1,5 +1,5 @@
 --[[
-    Zombie Rush Vulnerability Proof of Concept
+    Zombie Rush Vulnerability Report
     Discovered by 4RR6R
 
     This script demonstrates a server-side velocity desynchronization issue affecting AI target prediction mechanics
