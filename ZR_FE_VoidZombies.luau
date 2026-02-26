@@ -1,5 +1,5 @@
 --[[
-    Zombie Rush Vulnerability Proof of Concept
+    Zombie Rush Vulnerability Report
     Discovered by 4RR6R
 
     This script demonstrates a server-side validation issue related to weapon state handling that can affect zombie AI behavior and player entities
