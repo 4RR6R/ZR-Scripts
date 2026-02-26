@@ -1,5 +1,5 @@
 --[[
-    Zombie Rush Vulnerability Proof of Concept
+    Zombie Rush Vulnerability Report
     Discovered by 4RR6R
 
     This script demonstrates a server-side validation flaw in grenade handling through improper parameter type verification
