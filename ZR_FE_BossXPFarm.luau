@@ -24,6 +24,8 @@ local backpackEvent = ReplicatedStorage:WaitForChild("Remotes"):WaitForChild("Ba
 local primary = localPlayer:WaitForChild("EquipStorage"):WaitForChild("Primary")
 local gameTime = ReplicatedStorage:WaitForChild("GameProperties"):WaitForChild("GameState"):WaitForChild("Time")
 
+local zombieStorage = workspace:WaitForChild("Zombie Storage")
+
 local blacklistedZombies = {}
 
 --[[
@@ -39,18 +41,11 @@ local blacklistedZombies = {}
 local function getZombieTarget(origin : Vector3, range : number, bossInclude : boolean, zombieType : "LowHealth" | "HighHealth") : Model?
     local bestZombie = nil
     local bestHealth = (zombieType == "LowHealth") and math.huge or 0
-    for _, instance in workspace:GetDescendants() do
+    for _, instance in (bossInclude and workspace:GetChildren() or zombieStorage:GetChildren()) do
         local torso = instance:FindFirstChild("Torso")
         local humanoid = instance:FindFirstChild("Humanoid")
         if torso and humanoid and (humanoid.Health > 0.1 and humanoid:GetState() ~= Enum.HumanoidStateType.Dead) and instance:FindFirstChild("Enemy") and not table.find(blacklistedZombies, instance, 1) then
             if (torso.Position - origin).Magnitude <= range then
-                local isBoss = instance:GetAttribute("Boss") ~= nil
-                if not bossInclude and isBoss then
-                    continue 
-                elseif bossInclude and isBoss then
-                    bestZombie = instance
-                    break
-                end
                 local currentHealth = humanoid.Health
                 if zombieType == "HighHealth" then
                     if currentHealth > bestHealth then
@@ -65,6 +60,9 @@ local function getZombieTarget(origin : Vector3, range : number, bossInclude : b
                 end
             end
         end
+    end
+    if not bestZombie and bossInclude then
+        return getZombieTarget(origin, range, false, zombieType) 
     end
     return bestZombie
 end
@@ -106,11 +104,7 @@ local function main() : () -> ()
 				Tool = tool,
 				RealTool = tool,
 				HumanoidTables = {{
-					-- Injects a controlled head hit value
 					HeadHits = 1,
-					-- Injects a negative body hit value
-                    -- Used to observe how the server processes
-                    -- mixed-sign damage inputs
 					BodyHits = zombieTarget:GetAttribute("Boss") ~= nil and -1.5 or 0,
 					THumanoid = zombieTarget.Humanoid,
 				}},
